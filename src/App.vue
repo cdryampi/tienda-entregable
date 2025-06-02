@@ -1,11 +1,11 @@
 <script setup>
 
-import  TopBarComponent from './components/TopBarComponent.vue'
+import  TopBar from './components/topbar/Topbar.vue'
 </script>
 
 <template>
   <div class="w-full h-full flex flex-col">
-  <TopBarComponent />
+  <TopBar/>
   </div>
 </template>
 
