@@ -37,6 +37,7 @@
 
 
 <script setup>
+// Formulario para crear un nuevo comentario
 import { ref } from 'vue'
 import { useComments } from '@/composables/useComments'
 
@@ -49,6 +50,7 @@ const emit = defineEmits(['comment-added'])
 const name = ref('')
 const comment = ref('')
 
+// Envía el comentario a Supabase y limpia el formulario
 const submitComment = async () => {
   await InsertComment(props.uuid, comment.value, name.value)
   emit('comment-added')

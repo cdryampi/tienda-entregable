@@ -15,6 +15,7 @@
 </template>
 
 <script setup>
+// Propiedades que definen las tallas disponibles
 const props = defineProps({
   sizes: {
     type: Array,

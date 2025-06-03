@@ -17,6 +17,7 @@
 </template>
 
 <script setup>
+// Enlaces de navegación principales
 import { navLinks } from '@/data/navLinks.js'
 import Logo from './NavbarLogo.vue'
 </script>

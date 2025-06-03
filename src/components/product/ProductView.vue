@@ -66,6 +66,7 @@
 </template>
 
 <script setup>
+// Lógica principal de la vista de producto
 import { defineProps, computed, ref } from 'vue'
 import ProductImages from '@/components/product/ProductImages.vue'
 import ProductSizes from '@/components/product/ProductSizes.vue'
@@ -103,17 +104,21 @@ const props = defineProps({
 })
 const refreshKey = ref(Date.now())
 
+// Inserta un nuevo comentario y fuerza la recarga de la lista
 const handleAddComment = async ({ nombre, comentario }) => {
   await InsertComment(props.product.uuid, comentario, nombre)
-  refreshKey.value = Date.now() // Trigger re-fetch of comments
+  // Al cambiar la clave provocamos que ProductComments vuelva a cargar
+  refreshKey.value = Date.now()
 }
 
+// Calcula el precio formateado según la moneda actual
 const formattedPrice = computed(() => {
   const price = props.product.prices.find(p => p.currency === props.currency)
   const symbol = props.currencies.find(c => c.code === props.currency)?.symbol || '€'
   return price ? `${(price.value).toFixed(2)} ${symbol}` : 'N/A'
 })
 
+// Texto de ayuda para pagos con Afterpay (4 cuotas)
 const afterpayText = computed(() => {
   const price = props.product.prices.find(p => p.currency === props.currency)
   if (!price) return 'Afterpay not available'

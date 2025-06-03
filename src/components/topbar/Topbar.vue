@@ -1,4 +1,5 @@
 <script setup>
+// Barra superior con mensaje, redes sociales y selector de moneda
 import TopbarSocial from './TopbarSocial.vue'
 import TopbarMessage from './TopbarMessage.vue'
 import TopbarCurrency from './TopbarCurrency.vue'

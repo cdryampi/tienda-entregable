@@ -1,10 +1,14 @@
+// Composable dedicado a gestionar los comentarios de los productos
+// Se apoya en Supabase para el almacenamiento de los mismos.
 import { ref, unref } from 'vue'
 import { supabase } from '@/lib/supabase'
 import { Toaster, toast } from 'vue-sonner'
 import 'vue-sonner/style.css'
 
 export const useComments = () => {
+  // Estado reactivo que guarda la lista de comentarios
   const comments = ref([])
+  // En caso de error se rellenará esta variable
   const error = ref(null)
 
   const fetchComments = async (uuid) => {
@@ -21,6 +25,12 @@ export const useComments = () => {
     }
   }
 
+  /**
+   * Inserta un nuevo comentario para el producto indicado
+   * @param {string} uuid - Identificador del producto
+   * @param {string} comentario - Texto del comentario
+   * @param {string} nombre - Nombre del usuario
+   */
   const InsertComment = async (uuid, comentario, nombre) => {
     const { data, error: err } = await supabase
       .from('comentarios')

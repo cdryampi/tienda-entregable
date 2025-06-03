@@ -36,6 +36,7 @@
 </template>
 
 <script setup>
+// Controla la cantidad de productos a añadir
 import { ref, watch } from 'vue'
 
 const props = defineProps({
@@ -49,14 +50,17 @@ const emit = defineEmits(['update:modelValue'])
 
 const quantity = ref(props.modelValue)
 
+// Incrementa la cantidad sin superar el máximo de 9
 const increase = () => {
   if (quantity.value < 9) quantity.value++
 }
 
+// Decrementa la cantidad sin bajar de 1
 const decrease = () => {
   if (quantity.value > 1) quantity.value--
 }
 
+// Emitimos el nuevo valor al componente padre cuando cambia
 watch(quantity, (val) => {
   emit('update:modelValue', val)
 })

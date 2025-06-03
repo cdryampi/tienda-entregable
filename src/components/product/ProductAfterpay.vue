@@ -8,6 +8,7 @@
 </template>
 
 <script setup>
+// Mensaje informativo para pagos fraccionados
 import { defineProps } from 'vue'
 
 const props = defineProps({

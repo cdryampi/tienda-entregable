@@ -1,5 +1,6 @@
 <script setup>
-import { socialLinks } from '@/data/socialLinks.js' // crea este archivo como hicimos antes
+// Enlaces a redes sociales que se muestran en la barra superior
+import { socialLinks } from '@/data/socialLinks.js'
 </script>
 
 <template>
