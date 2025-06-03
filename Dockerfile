@@ -1,5 +1,7 @@
 FROM node:20-alpine AS base
-
+# set environment variables
+ARG VITE_SUPABASE_URL
+ARG VITE_SUPABASE_KEY
 # Install dependencies only when needed
 FROM base AS deps
 WORKDIR /app
