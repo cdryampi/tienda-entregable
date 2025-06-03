@@ -1,6 +1,6 @@
 <template>
   <section class="relative w-full min-h-screen bg-black flex items-center justify-center overflow-x-auto p-4">
-    <div class="absolute grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-0 w-full mx-auto">
+    <div class="absolute grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-0 w-full mx-auto top-0 left-0">
       <video
         v-for="(video, index) in videos"
         :key="index"

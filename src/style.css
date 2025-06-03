@@ -3,6 +3,7 @@
 
 @theme{
     --color-primary: #1F1F1F;
+    --color-secondary: #FFDDBF;
 }
 
 /* === Custom Styles === */
@@ -192,4 +193,23 @@ svg {
     padding: 1.5rem;
     max-width: fit-content;
   }
+}
+
+
+/* tema */
+
+.highlighted-text .icon-squiggle-underline {
+    width: 100%;
+    height: 50%;
+    inset-block-start: auto;
+    inset-block-end: -30%;
+}
+
+.highlighted-text .icon {
+    z-index: -1;
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    stroke: rgb(#FFDDBF);
+    transform: scaleX(1);
 }

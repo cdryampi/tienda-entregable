@@ -1,5 +1,5 @@
 <template>
-  <section class="relative w-full h-[90vh] overflow-hidden bg-black">
+  <section class="relative w-full h-[40vh] overflow-hidden bg-black">
     <HeroVideoSlider />
     <HeroTextOverlay />
   </section>
