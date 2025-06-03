@@ -5,7 +5,7 @@ const currentProduct = ref(null)
 
 const fetchProducts = async () => {
   try {
-    const res = await fetch('/src/data/products.json')
+    const res = await fetch('/products.json')
     if (!res.ok) throw new Error('Failed to fetch products')
     products.value = await res.json()
   } catch (err) {
