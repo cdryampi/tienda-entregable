@@ -30,7 +30,7 @@
       }
     ],
     "unitsInStock": 10,
-    "image": "./src/assets/products/Back-Bone.png",
+    "image": "/products/Back-Bone.png",
     "sizes": ["S", "M", "L", "XL", "2XL"],
     "description": "Stay Humble Relax Hood Holy Canopy is a stylish and comfortable hoodie designed for everyday wear. Made from high-quality materials, it features a relaxed fit and a unique design that stands out.",
     "category": "Flowers & Saints",
@@ -78,7 +78,7 @@
       }
     ],
     "unitsInStock": 10,
-    "image": "./src/assets/products/Shadow-Back.png",
+    "image": "/products/Shadow-Back.png",
     "sizes": ["S", "M", "P", "L", "XL"],
     "description": "Stay Humble Relax Hood Sacred Sand is a stylish and comfortable hoodie designed for everyday wear. Made from high-quality materials, it features a relaxed fit and a unique design that stands out.",
     "category": "Flowers & Saints",
@@ -126,7 +126,7 @@
       }
     ],
     "unitsInStock": 10,
-    "image": "./src/assets/products/Clay-Back.png",
+    "image": "/products/Clay-Back.png",
     "sizes": ["S","S1", "M", "L", "XL"],
     "description": "Stay Humble Relax Hood Sacred Sand is a stylish and comfortable hoodie designed for everyday wear. Made from high-quality materials, it features a relaxed fit and a unique design that stands out.",
     "category": "Flowers & Saints",
@@ -174,7 +174,7 @@
       }
     ],
     "unitsInStock": 10,
-    "image": "./src/assets/products/Cobalt-Back.png",
+    "image": "/products/Cobalt-Back.png",
     "sizes": ["S", "M", "L", "2L", "XL"],
     "description": "Stay Humble Relax Hood Pine Green Black is a stylish and comfortable hoodie designed for everyday wear. Made from high-quality materials, it features a relaxed fit and a unique design that stands out.",
     "category": "Flowers & Saints",
@@ -222,7 +222,7 @@
       }
     ],
     "unitsInStock": 10,
-    "image": "./src/assets/products/PineGreen-Black.png",
+    "image": "/products/PineGreen-Black.png",
     "sizes": ["S", "M", "SM", "L", "XL"],
     "description": "Stay Humble Relax Hood Covenant Clay is a stylish and comfortable hoodie designed for everyday wear. Made from high-quality materials, it features a relaxed fit and a unique design that stands out.",
     "category": "Flowers & Saints",
@@ -270,7 +270,7 @@
       }
     ],
     "unitsInStock": 0,
-    "image": "./src/assets/products/Shadow-Back.png",
+    "image": "/products/Shadow-Back.png",
     "sizes": ["S", "M", "L", "XL", "2XL"],
     "description": "Stay Humble Relax Hood Pine Green Black is a stylish and comfortable hoodie designed for everyday wear. Made from high-quality materials, it features a relaxed fit and a unique design that stands out.",
     "category": "Flowers & Saints",
