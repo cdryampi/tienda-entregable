@@ -21,8 +21,9 @@
 </template>
 
 <script setup>
+// Lista y gestión de comentarios almacenados en Supabase
 import { ref, watch, onMounted } from 'vue'
-import { useComments} from '@/composables/useComments'
+import { useComments } from '@/composables/useComments'
 
 const props = defineProps({ 
   uuid: String,
@@ -32,11 +33,13 @@ const props = defineProps({
 })
 const { fetchComments, comments } = useComments()
 
+// Obtiene los comentarios asociados al UUID del producto
 const loadComments = async () => {
   if (props.uuid) {
     await fetchComments(props.uuid)
   }
 }
+// Formatea una fecha ISO a un formato legible
 const formatDate = (iso) => {
   const d = new Date(iso)
   return d.toLocaleDateString(undefined, {

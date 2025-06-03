@@ -1,4 +1,5 @@
 <script setup>
+// Selector de moneda que utiliza el composable de currency
 import { onMounted, computed } from 'vue'
 import { useCurrency } from '@/composables/useCurrency'
 
@@ -13,9 +14,9 @@ const {
 
 const currentCurrency = computed(() => getCurrencyData())
 
+// Cambia la moneda seleccionada y la persiste
 const changeCurrency = async (code) => {
   await setCurrency(code)
-  //await updateUX()
 }
 
 // const updateUX = async () => {
@@ -30,6 +31,7 @@ const changeCurrency = async (code) => {
 //   }
 //}
 
+// Al montar el componente cargamos las monedas disponibles
 onMounted(() => loadCurrencies(), getCurrency())
 </script>
 

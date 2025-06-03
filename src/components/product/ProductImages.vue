@@ -43,6 +43,8 @@
 </template>
 
 <script setup>
+// Muestra las imágenes del producto junto con el descuento
+// y un contador de tiempo restante
 import { onMounted, ref } from 'vue'
 
 const props = defineProps({
@@ -61,6 +63,7 @@ const props = defineProps({
 
 const countdown = ref('00:00:00')
 
+// Calcula el tiempo restante del descuento
 const updateCountdown = () => {
   const endDate = new Date(props.validUntil)
   const now = new Date()

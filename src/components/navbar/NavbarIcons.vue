@@ -1,4 +1,5 @@
 <script setup>
+// Iconos de la barra de navegación (búsqueda, carrito, etc.)
 import { ref, computed } from 'vue'
 import navbarIcons from '@/data/navbarIcons.json'
 
@@ -9,10 +10,12 @@ const props = defineProps({
   }
 })
 
+// Icono utilizado para la búsqueda
 const searchIcon = computed(() =>
   navbarIcons.find(icon => icon.name === 'search')
 )
 
+// Resto de iconos (carrito, cuenta, ...)
 const allIconsExceptSearch = computed(() =>
   navbarIcons.filter(icon => icon.name !== 'search')
 )

@@ -36,6 +36,7 @@
 </template>
 
 <script setup>
+// Tarjeta individual de producto para la vista de listado
 import { computed, defineProps, defineEmits } from 'vue'
 
 const props = defineProps({
@@ -45,6 +46,7 @@ const props = defineProps({
 
 defineEmits(['click'])
 
+// Conversión rápida de código de moneda a su símbolo
 const currencySymbols = {
   USD: '$',
   EUR: '€',
@@ -54,6 +56,7 @@ const currencySymbols = {
   CAD: '$'
 }
 
+// Devuelve el precio del producto con el símbolo correcto
 const formattedPrice = computed(() => {
   const prices = props.product.prices
   const price = prices.find(p => p.currency === props.currency)

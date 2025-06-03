@@ -9,6 +9,7 @@
 </template>
 
 <script setup>
+// Componente principal de navegación superior
 import NavbarLogo from './NavbarLogo.vue'
 import NavbarLinks from './NavbarLinks.vue'
 import NavbarIcons from './NavbarIcons.vue'
