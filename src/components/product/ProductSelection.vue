@@ -1,0 +1,29 @@
+<template>
+  <section class="py-8 px-4 max-w-7xl mx-auto">
+    <h2 class="text-3xl font-bold mb-6">Only a <span class="underline decoration-secondary">Few Pieces</span> Left</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <ProductCard
+        v-for="p in limited"
+        :key="p.uuid"
+        :product="p"
+        :currency="selectedCurrency"
+        @click="setCurrentProduct(p.uuid)"
+      />
+    </div>
+  </section>
+</template>
+
+<script setup>
+import { onMounted, computed } from 'vue'
+import ProductCard from './ProductCard.vue'
+import { useProducts } from '@/composables/useProducts'
+import { useCurrency } from '@/composables/useCurrency' // lo necesitamos para cambiar el precio
+
+
+const { products, fetchProducts, setCurrentProduct } = useProducts()
+const { selectedCurrency } = useCurrency()
+
+onMounted(() => fetchProducts())
+
+const limited = computed(() => products.value.slice(0, 6)) // o lo que quieras
+</script>

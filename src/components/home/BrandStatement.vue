@@ -15,7 +15,7 @@
 
       <!-- Botón -->
       <button
-        class="mt-10 px-6 py-3 border-2 border-black rounded-xl text-black font-semibold flex items-center gap-2 hover:bg-black hover:text-white transition-all duration-300"
+        class="mt-10 cursor-pointer px-6 py-3 border-2 border-black rounded-xl text-black font-semibold flex items-center gap-2 hover:bg-black hover:text-white transition-all duration-300"
       >
         Our Story →
       </button>

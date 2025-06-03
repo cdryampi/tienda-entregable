@@ -66,7 +66,7 @@ onMounted(() => loadCurrencies(), getCurrency())
           </p>
         </div>
         <ul
-        class="absolute top-full mt-0 hidden peer-hover:flex hover:flex flex-col gap-7 bg-primary rounded-3xl z-50 p-5 w-[180px]"
+        class="absolute top-full mt-0 hidden peer-hover:flex hover:flex flex-col gap-7 bg-primary rounded-3xl z-100 p-5 w-[180px]"
         >
         <li
           v-for="currency in currencies"

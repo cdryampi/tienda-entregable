@@ -20,11 +20,6 @@
         "symbol": "¥"
     },
     {
-        "name": "Swiss",
-        "code": "CHF",
-        "symbol": "CHF"
-    },
-    {
         "name": "Australian",
         "code": "AUD",
         "symbol": "$"
