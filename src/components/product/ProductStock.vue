@@ -6,7 +6,7 @@
     >
       <span class="bg-green-900 green-circle relative">
         <svg
-          class="absolute dicon icon-ellipse icon-xs shrink-0"
+          class="absolute dicon icon-ellipse icon-xs shrink-0 bottom-[-0.5rem]"
           viewBox="0 0 16 16"
           stroke="currentColor"
           fill="none"

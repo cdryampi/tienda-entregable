@@ -5,7 +5,7 @@
       <a
         v-for="(size, index) in sizes"
         :key="index"
-        href="#"
+        href="javascript:void(0)"
         class="dance-link py-3 px-5 border-2 border-black rounded-sm font-bold"
       >
         {{ size }}

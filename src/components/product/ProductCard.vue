@@ -18,13 +18,13 @@
     </div>
 
     <div class="text-xs text-gray-500 uppercase tracking-wider font-medium">
-      <a href="#" class="cursor-pointer line">
+      <a href="javascript:void(0)" class="cursor-pointer line">
         {{ product.category }}
       </a>
     </div>
 
     <h3 class="text-base font-semibold text-gray-900" @click="$emit('click')">
-      <a href="#" class="cursor-pointer line">
+      <a href="javascript:void(0)" class="cursor-pointer line">
         {{ product.name }} - {{ product.type }}
       </a>
     </h3>
