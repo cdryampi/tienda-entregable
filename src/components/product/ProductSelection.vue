@@ -7,7 +7,7 @@
         :key="p.uuid"
         :product="p"
         :currency="selectedCurrency"
-        @click="setCurrentProduct(p.uuid)"
+        @click="$emit('select', p.uuid)" 
       />
     </div>
   </section>
@@ -17,7 +17,7 @@
 import { onMounted, computed } from 'vue'
 import ProductCard from './ProductCard.vue'
 import { useProducts } from '@/composables/useProducts'
-import { useCurrency } from '@/composables/useCurrency' // lo necesitamos para cambiar el precio
+import { useCurrency } from '@/composables/useCurrency'
 
 
 const { products, fetchProducts, setCurrentProduct } = useProducts()
@@ -25,5 +25,7 @@ const { selectedCurrency } = useCurrency()
 
 onMounted(() => fetchProducts())
 
-const limited = computed(() => products.value.slice(0, 6)) // o lo que quieras
+const limited = computed(() => products.value.slice(0, 6))
+defineEmits(['select'])
+
 </script>

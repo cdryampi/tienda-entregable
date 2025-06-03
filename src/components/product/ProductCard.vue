@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-white rounded-3xl shadow-sm hover:shadow-xl transition p-4 cursor-pointer flex flex-col gap-4"
+    class="bg-white rounded-3xl shadow-sm hover:shadow-xl transition p-4 cursor-pointer flex flex-col gap-4" @click="$emit('click', product.uuid)"
   >
     <div class="relative overflow-hidden rounded-2xl">
       <img
@@ -23,7 +23,7 @@
       </a>
     </div>
 
-    <h3 class="text-base font-semibold text-gray-900 cursor-pointer line" @click="$emit('click')">
+    <h3 class="text-base font-semibold text-gray-900" @click="$emit('click')">
       <a href="#" class="cursor-pointer line">
         {{ product.name }} - {{ product.type }}
       </a>
