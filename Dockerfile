@@ -16,7 +16,7 @@ COPY . .
 
 # Create .env file from environment variables at build time
 RUN echo "VITE_SUPABASE_URL=$VITE_SUPABASE_URL" > .env && \
-    echo "VITE_SUPABASE_KEY=$VITE_SUPABASE_KEY" >> .env && \
+    echo "VITE_SUPABASE_KEY=$VITE_SUPABASE_KEY" >> .env
 
 
 # Build the project
