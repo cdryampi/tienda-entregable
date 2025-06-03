@@ -22,12 +22,23 @@ const setCurrentProduct = (uuid) => {
   currentProduct.value = getProductByUUID(uuid)
 }
 
+const getFirstProduct = () => {
+  // función para obtener el primer producto
+  if (products.value.length > 0) {
+    currentProduct.value = products.value[0]
+  } else {
+    currentProduct.value = null
+  }
+  return currentProduct.value
+}
+
 export function useProducts() {
   return {
     products,
     currentProduct,
     fetchProducts,
     getProductByUUID,
-    setCurrentProduct
+    setCurrentProduct,
+    getFirstProduct
   }
 }

@@ -2,7 +2,7 @@
   <div>
     <p>
       <small>
-        <a href="#" class="text-gray line">
+        <a href="avascript:void(0)" class="text-gray line">
           {{ product.category }}
         </a>
       </small>

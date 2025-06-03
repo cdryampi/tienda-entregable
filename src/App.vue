@@ -6,6 +6,8 @@ import HeroBanner from './components/home/HeroBanner.vue'
 import ProductSelection from './components/product/ProductSelection.vue'
 import ProductContainer from './components/product/ProductContainer.vue'
 import { useProducts } from '@/composables/useProducts'
+import 'vue-sonner/style.css'
+import { Toaster, toast } from 'vue-sonner'
 
 const { setCurrentProduct } = useProducts()
 const productViewRef = ref(null)
@@ -19,6 +21,7 @@ const handleProductClick = async (uuid) => {
 
 <template>
   <div class="w-full h-full flex flex-col">
+    <Toaster position="top-right" richColors />
     <TopBar />
     <NavBar />
     <HeroBanner />

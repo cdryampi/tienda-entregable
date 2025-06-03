@@ -55,11 +55,18 @@
         <ProductSpecs />
       </div>
     </aside>
+    <!-- Comentarios del producto -->
+     <section class="container mx-auto w-full p-5">
+      <ProductComments :uuid="product.uuid" :refreshKey="refreshKey" />
+     </section> 
+     <aside class="container mx-auto w-full p-5">
+      <CommentForm :uuid="product.uuid" @submit="handleAddComment" />
+     </aside>
   </article>
 </template>
 
 <script setup>
-import { defineProps, computed } from 'vue'
+import { defineProps, computed, ref } from 'vue'
 import ProductImages from '@/components/product/ProductImages.vue'
 import ProductSizes from '@/components/product/ProductSizes.vue'
 import ProductStock from '@/components/product/ProductStock.vue'
@@ -68,9 +75,16 @@ import ProductDescription from '@/components/product/ProductDescription.vue'
 import ProductAfterpay from '@/components/product/ProductAfterpay.vue'
 import ProductSpecs from '@/components/product/ProductSpecs.vue'
 import SelectVariant from '@/components/product/SelectVariant.vue'
+import ProductComments from '@/components/product/product-coment/ProductComments.vue'
+import CommentForm from '@/components/product/product-coment/CommentForm.vue'
 import { useProducts } from '@/composables/useProducts'
+import { useComments } from '@/composables/useComments'
+
+
+
 
 const { currentProduct, products, setCurrentProduct } = useProducts()
+const { InsertComment } = useComments()
 
 
 const props = defineProps({
@@ -87,6 +101,12 @@ const props = defineProps({
     default: () => []
   }
 })
+const refreshKey = ref(Date.now())
+
+const handleAddComment = async ({ nombre, comentario }) => {
+  await InsertComment(props.product.uuid, comentario, nombre)
+  refreshKey.value = Date.now() // Trigger re-fetch of comments
+}
 
 const formattedPrice = computed(() => {
   const price = props.product.prices.find(p => p.currency === props.currency)

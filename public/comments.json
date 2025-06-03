@@ -1,0 +1,20 @@
+[
+  {
+    "uuid": "9b52127f-52b9-4e87-a310-2758ead230bc",
+    "created_at": "2025-06-01T10:23:00Z",
+    "name": "Ana",
+    "description": "Me encantó la calidad del tejido. Se siente premium."
+  },
+  {
+    "uuid": "9b52127f-52b9-4e87-a310-2758ead230bc",
+    "created_at": "2025-06-02T14:47:00Z",
+    "name": "Carlos",
+    "description": "El diseño está brutal. Muy comfy y estiloso."
+  },
+  {
+    "uuid": "9b52127f-52b9-4e87-a310-2758ead230bc",
+    "created_at": "2025-06-03T09:15:00Z",
+    "name": "Lucía",
+    "description": "Lástima que no había mi talla. Aun así lo compré 😂"
+  }
+]
