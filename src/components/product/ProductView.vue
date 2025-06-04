@@ -1,5 +1,5 @@
 <template>
-  <article :id="product.uuid" :uuid="product.uuid">
+  <article :id="product.uuid" :uuid="product.uuid" class="border-t border-secondary">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 p-4 w-full products-container border-b-2 border-gray-200">
       <!-- Imágenes del producto -->
       <ProductImages
@@ -66,64 +66,63 @@
 </template>
 
 <script setup>
-// Lógica principal de la vista de producto
-import { defineProps, computed, ref } from 'vue'
-import ProductImages from '@/components/product/ProductImages.vue'
-import ProductSizes from '@/components/product/ProductSizes.vue'
-import ProductStock from '@/components/product/ProductStock.vue'
-import ProductQuantity from '@/components/product/ProductQuantity.vue'
-import ProductDescription from '@/components/product/ProductDescription.vue'
-import ProductAfterpay from '@/components/product/ProductAfterpay.vue'
-import ProductSpecs from '@/components/product/ProductSpecs.vue'
-import SelectVariant from '@/components/product/SelectVariant.vue'
-import ProductComments from '@/components/product/product-coment/ProductComments.vue'
-import CommentForm from '@/components/product/product-coment/CommentForm.vue'
-import { useProducts } from '@/composables/useProducts'
-import { useComments } from '@/composables/useComments'
+  // Lógica principal de la vista de producto
+  import { defineProps, computed, ref, watch } from 'vue'
+  import ProductImages from '@/components/product/ProductImages.vue'
+  import ProductSizes from '@/components/product/ProductSizes.vue'
+  import ProductStock from '@/components/product/ProductStock.vue'
+  import ProductQuantity from '@/components/product/ProductQuantity.vue'
+  import ProductDescription from '@/components/product/ProductDescription.vue'
+  import ProductAfterpay from '@/components/product/ProductAfterpay.vue'
+  import ProductSpecs from '@/components/product/ProductSpecs.vue'
+  import SelectVariant from '@/components/product/SelectVariant.vue'
+  import ProductComments from '@/components/product/product-coment/ProductComments.vue'
+  import CommentForm from '@/components/product/product-coment/CommentForm.vue'
+  import { useProducts } from '@/composables/useProducts'
+  import { useComments } from '@/composables/useComments'
+  import { useCurrency } from '@/composables/useCurrency'
 
 
 
+  const { currentProduct, products, setCurrentProduct } = useProducts()
+  const { InsertComment } = useComments()
 
-const { currentProduct, products, setCurrentProduct } = useProducts()
-const { InsertComment } = useComments()
-
-
-const props = defineProps({
-  product: {
-    type: Object,
-    required: true
-  },
-  currency: {
-    type: String,
-    default: 'EUR'
-  },
-  currencies: {
-    type: Array,
-    default: () => []
+  const props = defineProps({
+    product: {
+      type: Object,
+      required: true
+    },
+    currencies: {
+      type: Array,
+      default: () => []
+    }
+  })
+  const refreshKey = ref(Date.now())
+  const { selectedCurrency } = useCurrency()
+  const currency = selectedCurrency
+  // Inserta un nuevo comentario y fuerza la recarga de la lista
+  const handleAddComment = async ({ nombre, comentario }) => {
+    await InsertComment(props.product.uuid, comentario, nombre)
+    // Al cambiar la clave provocamos que ProductComments vuelva a cargar
+    refreshKey.value = Date.now()
   }
-})
-const refreshKey = ref(Date.now())
 
-// Inserta un nuevo comentario y fuerza la recarga de la lista
-const handleAddComment = async ({ nombre, comentario }) => {
-  await InsertComment(props.product.uuid, comentario, nombre)
-  // Al cambiar la clave provocamos que ProductComments vuelva a cargar
-  refreshKey.value = Date.now()
-}
+  // Calcula el precio formateado según la moneda actual
+  const formattedPrice = computed(() => {
+    const price = props.product.prices.find(p => p.currency === currency.value)
+    const symbol = props.currencies.find(c => c.code === currency.value)?.symbol || '€'
+    return price ? `${(price.value).toFixed(2)} ${symbol}` : 'N/A'
+  })
 
-// Calcula el precio formateado según la moneda actual
-const formattedPrice = computed(() => {
-  const price = props.product.prices.find(p => p.currency === props.currency)
-  const symbol = props.currencies.find(c => c.code === props.currency)?.symbol || '€'
-  return price ? `${(price.value).toFixed(2)} ${symbol}` : 'N/A'
-})
 
-// Texto de ayuda para pagos con Afterpay (4 cuotas)
-const afterpayText = computed(() => {
-  const price = props.product.prices.find(p => p.currency === props.currency)
-  if (!price) return 'Afterpay not available'
-  const value = (price.value / 4).toFixed(2)
-  const symbol = props.currencies.find(c => c.code === props.currency)?.symbol || '€'
-  return `${value} ${symbol}`
-})
+  // Texto de ayuda para pagos con Afterpay (4 cuotas)
+  const afterpayText = computed(() => {
+    const price = props.product.prices.find(p => p.currency === currency.value)
+    if (!price) return 'Afterpay not available'
+    const value = (price.value / 4).toFixed(2)
+    const symbol = props.currencies.find(c => c.code === currency.value)?.symbol || '€'
+    return `${value} ${symbol}`
+  })
+
+
 </script>

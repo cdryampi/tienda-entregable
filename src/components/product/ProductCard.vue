@@ -1,5 +1,5 @@
 <template>
-  <div
+  <article
     class="bg-white rounded-3xl shadow-secondary shadow-sm hover:shadow-xl transition p-4 cursor-pointer flex flex-col gap-4" @click="$emit('click', product.uuid)"
   >
     <div class="relative overflow-hidden rounded-2xl">
@@ -30,19 +30,23 @@
     </h3>
 
     <div class="text-sm font-bold text-right text-black">
-      {{ formattedPrice }}
+      {{ price }}
     </div>
-  </div>
+  </article>
 </template>
 
 <script setup>
 // Tarjeta individual de producto para la vista de listado
 import { computed, defineProps, defineEmits } from 'vue'
+import { useCurrency } from '@/composables/useCurrency'
+
 
 const props = defineProps({
   product: Object,
-  currency: String
+  required: true,
 })
+
+const { selectedCurrency, currencies } = useCurrency()
 
 defineEmits(['click'])
 
@@ -57,10 +61,9 @@ const currencySymbols = {
 }
 
 // Devuelve el precio del producto con el símbolo correcto
-const formattedPrice = computed(() => {
-  const prices = props.product.prices
-  const price = prices.find(p => p.currency === props.currency)
-  const symbol = currencySymbols[props.currency] || props.currency
-  return price ? `${symbol}${price.value.toFixed(2)}` : 'N/A'
+const price = computed(() => {
+  const price = props.product.prices.find(p => p.currency === selectedCurrency.value)
+  const symbol = currencies.value.find(c => c.code === selectedCurrency.value)?.symbol || '€'
+  return price ? `${price.value.toFixed(2)} ${symbol}` : 'N/A'
 })
 </script>

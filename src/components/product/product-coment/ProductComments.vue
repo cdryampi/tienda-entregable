@@ -1,5 +1,8 @@
 <template>
-  <div class="w-full mt-6">
+  <div class="border-t border-secondary my-15">
+
+  </div>
+  <div class="flex flex-col mx-auto p-6 bg-gray-100 rounded-lg shadow-md pt-5">
     <h3 class="text-xl font-bold mb-4">Comments</h3>
 
     <div v-if="loading" class="text-gray-500 italic">Cargando comentarios...</div>

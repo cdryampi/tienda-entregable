@@ -3,7 +3,6 @@
   <section v-if="currentProduct" class="w-full mt-5 border-top border-secondary">
     <ProductView
       :product="currentProduct"
-      :currency="currency"
       :currencies="currencies"
       @select-variant="handleVariantChange"
     />
@@ -11,14 +10,13 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted } from 'vue'
 import ProductView from '@/components/product/ProductView.vue'
 import { useProducts } from '@/composables/useProducts'
+import { useCurrency } from '@/composables/useCurrency'
 
 const { currentProduct, fetchProducts, setCurrentProduct, getFirstProduct } = useProducts()
-
-const currency = ref(localStorage.getItem('currency') || 'EUR')
-const currencies = ref(JSON.parse(localStorage.getItem('currencies')) || [])
+const { selectedCurrency, currencies } = useCurrency()
 
 // Cargar productos al montar el componente
 onMounted(async () => {
@@ -31,3 +29,4 @@ const handleVariantChange = (uuid) => {
   setCurrentProduct(uuid)
 }
 </script>
+

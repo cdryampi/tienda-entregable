@@ -1,6 +1,6 @@
 <template>
   <!-- Sección que muestra un listado reducido de productos -->
-  <section class="py-8 px-4 max-w-7xl mx-auto">
+  <section class="py-8 px-4 max-w-7xl mx-auto border-t border-secondary">
     <h2 class="text-3xl font-bold mb-6">
       Only a <span class="underline decoration-secondary">Few Pieces</span> Left
     </h2>
@@ -9,7 +9,6 @@
         v-for="p in limited"
         :key="p.uuid"
         :product="p"
-        :currency="selectedCurrency"
         @click="$emit('select', p.uuid)"
       />
     </div>
@@ -20,11 +19,8 @@
 import { onMounted, computed } from 'vue'
 import ProductCard from './ProductCard.vue'
 import { useProducts } from '@/composables/useProducts'
-import { useCurrency } from '@/composables/useCurrency'
-
 
 const { products, fetchProducts, setCurrentProduct } = useProducts()
-const { selectedCurrency } = useCurrency()
 
 // Cargamos la lista de productos cuando el componente se monta
 onMounted(() => fetchProducts())
