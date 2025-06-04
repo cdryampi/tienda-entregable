@@ -10,8 +10,11 @@ export const useComments = () => {
   const comments = ref([])
   // En caso de error se rellenará esta variable
   const error = ref(null)
+  // Estado de carga para mostrar feedback en la UI
+  const loading = ref(false)
 
   const fetchComments = async (uuid) => {
+    loading.value = true
     const { data, error: err } = await supabase
       .from('comentarios')
       .select('*')
@@ -23,6 +26,7 @@ export const useComments = () => {
     } else {
       comments.value = data
     }
+    loading.value = false
   }
 
   /**
@@ -32,6 +36,7 @@ export const useComments = () => {
    * @param {string} nombre - Nombre del usuario
    */
   const InsertComment = async (uuid, comentario, nombre) => {
+    loading.value = true
     const { data, error: err } = await supabase
       .from('comentarios')
       .insert([
@@ -44,20 +49,26 @@ export const useComments = () => {
 
     if (err) {
       error.value = err
+      toast.error('Error al añadir el comentario', {
+        position: 'top-right',
+        duration: 3000
+      })
     } else {
-      toast.success('added comment successfully', {
+      toast.success('Comentario añadido', {
         position: 'top-right',
         duration: 3000
       })
     }
 
     await fetchComments(unref(uuid))
+    loading.value = false
   }
 
 
   return {
     comments,
     error,
+    loading,
     fetchComments,
     InsertComment
   }
