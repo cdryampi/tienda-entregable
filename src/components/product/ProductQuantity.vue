@@ -14,13 +14,13 @@
         </svg>
       </button>
       <input
-        type="text"
+        type="number"
         id="quantity-input"
         v-model="quantity"
+        @input="onInput"
         class="bg-white border-x-0 border-gray-300 h-11 text-center text-black text-sm focus:ring-black focus:border-black block w-full py-2.5"
         min="1"
         max="9"
-        readonly
       />
       <button
         type="button"
@@ -49,6 +49,13 @@ const props = defineProps({
 const emit = defineEmits(['update:modelValue'])
 
 const quantity = ref(props.modelValue)
+
+const onInput = (e) => {
+  let val = parseInt(e.target.value, 10)
+  if (isNaN(val) || val < 1) val = 1
+  if (val > 9) val = 9
+  quantity.value = val
+}
 
 // Incrementa la cantidad sin superar el máximo de 9
 const increase = () => {

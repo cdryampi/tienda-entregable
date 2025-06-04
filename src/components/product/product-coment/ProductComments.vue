@@ -2,7 +2,8 @@
   <div class="w-full mt-6">
     <h3 class="text-xl font-bold mb-4">Comments</h3>
 
-    <div v-if="comments && comments.length === 0" class="text-gray-500 italic">
+    <div v-if="loading" class="text-gray-500 italic">Cargando comentarios...</div>
+    <div v-else-if="comments && comments.length === 0" class="text-gray-500 italic">
       No comments yet for this product.
     </div>
 
@@ -31,7 +32,7 @@ const props = defineProps({
     type: [Number, String]
   }
 })
-const { fetchComments, comments } = useComments()
+const { fetchComments, comments, loading } = useComments()
 
 // Obtiene los comentarios asociados al UUID del producto
 const loadComments = async () => {
