@@ -10,7 +10,7 @@
     <ul v-else class="space-y-4">
       <li
         v-for="(comment, index) in paginatedComments"
-        :key="index"
+        :key="comment.id"
         class="p-4 bg-gray-100 rounded-lg shadow-sm"
       >
         <p class="font-semibold text-sm text-gray-800">{{ comment.name }}</p>
