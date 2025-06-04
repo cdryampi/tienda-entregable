@@ -5,7 +5,7 @@
         id="image-large"
         :src="imageLarge"
         :alt="altText"
-        class="img-full bg-gray-100 rounded-lg shadow-md cursor-pointer transition-transform duration-300 ease-in-out transform hover:scale-105"
+        class="img-full bg-gray-100 rounded-lg shadow-secondary shadow-md cursor-pointer transition-transform duration-300 ease-in-out transform hover:scale-105"
       />
       <!-- Descuento + Countdown -->
       <div
@@ -19,7 +19,7 @@
           -{{ discount }}%
         </div>
 
-        <div class="bg-black/80 text-white text-xs px-3 py-1 rounded-md shadow">
+        <div class="bg-secondary text-white text-xs px-3 py-1 rounded-md shadow">
           <span
             id="countdown"
             class="font-mono tracking-widest"
@@ -36,7 +36,7 @@
         id="image-small"
         :src="imageSmall"
         :alt="altText"
-        class="img-min bg-gray-100 rounded-lg shadow-md cursor-pointer transition-transform duration-300 ease-in-out transform hover:scale-105"
+        class="img-min bg-gray-100 shadow-secondary rounded-lg shadow-md cursor-pointer transition-transform duration-300 ease-in-out transform hover:scale-105"
       />
     </div>
   </div>

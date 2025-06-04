@@ -7,7 +7,7 @@
       <li v-else>
         <a
           :href="link.href"
-          class="inline-block p-3 hover:bg-black hover:text-white hover:rounded-full transition-all duration-300 ease-in-out"
+          class="inline-block p-3 hover:bg-secondary hover:text-white hover:rounded-full transition-all duration-300 ease-in-out"
         >
           {{ link.label }}
         </a>

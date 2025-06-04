@@ -7,7 +7,7 @@
       <button
         type="button"
         @click="decrease"
-        class="group hover:bg-black hover:text-white border border-black rounded-s-lg p-3 h-11 focus:ring-black focus:ring-2 focus:outline-none"
+        class="group hover:bg-secondary hover:text-white border border-secondary rounded-s-lg p-3 h-11 focus:ring-secondary focus:ring-2 focus:outline-none"
       >
         <svg class="w-3 h-3 text-black group-hover:text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16"/>
@@ -18,14 +18,14 @@
         id="quantity-input"
         v-model="quantity"
         @input="onInput"
-        class="bg-white border-x-0 border-gray-300 h-11 text-center text-black text-sm focus:ring-black focus:border-black block w-full py-2.5"
+        class="bg-white border-x-0 border-gray-300 h-11 text-center text-black text-sm focus:ring-secondary focus:border-secondary block w-full py-2.5"
         min="1"
         max="9"
       />
       <button
         type="button"
         @click="increase"
-        class="group bg-white hover:bg-black hover:text-white border border-black rounded-e-lg p-3 h-11 focus:ring-black focus:ring-2 focus:outline-none"
+        class="group bg-white hover:bg-secondary hover:text-white border border-secondary rounded-e-lg p-3 h-11 focus:ring-secondary focus:ring-2 focus:outline-none"
       >
         <svg class="w-3 h-3 text-black group-hover:text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>

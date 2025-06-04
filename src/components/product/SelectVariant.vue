@@ -11,7 +11,7 @@
       <img
         :src="product.image"
         :alt="product.name"
-        class="w-16 h-16 bg-gray-100 rounded-lg shadow-md cursor-pointer hover:scale-105 transition-transform"
+        class="w-16 h-16 bg-gray-100 rounded-lg shadow-secondary shadow-md cursor-pointer hover:scale-105 transition-transform"
       />
     </a>
   </div>

@@ -3,7 +3,7 @@
     or 4 interest-free payments of
     <span class="text-gray-900 font-bold" id="afterpay">{{ afterpay }}</span>
     with
-    <span class="bg-teal-300 cursor-pointer text-sm p-2 rounded-full text-black font-bold">afterpay</span>
+    <span class="bg-secondary cursor-pointer text-sm p-2 rounded-full text-white font-bold">afterpay</span>
   </p>
 </template>
 

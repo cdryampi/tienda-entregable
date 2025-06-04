@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-white rounded-3xl shadow-sm hover:shadow-xl transition p-4 cursor-pointer flex flex-col gap-4" @click="$emit('click', product.uuid)"
+    class="bg-white rounded-3xl shadow-secondary shadow-sm hover:shadow-xl transition p-4 cursor-pointer flex flex-col gap-4" @click="$emit('click', product.uuid)"
   >
     <div class="relative overflow-hidden rounded-2xl">
       <img

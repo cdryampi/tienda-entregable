@@ -1,6 +1,6 @@
 <template>
   <!-- Contenedor principal donde se muestra la vista detallada del producto -->
-  <section v-if="currentProduct" class="w-full mt-5 border-top border-gray-200">
+  <section v-if="currentProduct" class="w-full mt-5 border-top border-secondary">
     <ProductView
       :product="currentProduct"
       :currency="currency"

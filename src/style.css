@@ -2,8 +2,8 @@
 @plugin "flowbite/plugin";
 
 @theme{
-    --color-primary: #1F1F1F;
-    --color-secondary: #FFDDBF;
+    --color-primary: #2A1A13;
+    --color-secondary: #87604E;
 }
 
 /* === Custom Styles === */
@@ -212,4 +212,13 @@ svg {
     inset-inline-start: 0;
     stroke: rgb(#FFDDBF);
     transform: scaleX(1);
+}
+
+.icon-box {
+    width: 15rem;
+    height: auto;
+    position: absolute;
+    inset-block-end: 100%;
+    inset-inline-start: 50%;
+    left: 22.5%;
 }

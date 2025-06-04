@@ -74,3 +74,6 @@ Integrar **Supabase** para gestionar comentarios en productos. Cada comentario g
 - [ ] Importar los dos componentes en `ProductView.vue`
   - `<ProductCommentForm :uuid="product.uuid" />`
   - `<ProductComments :uuid="product.uuid" />`
+
+## Idea adicional
+- hacer un chatbot de la mujer del video versión chibi, que responda a preguntas sobre los productos que tenemos en supabase.
