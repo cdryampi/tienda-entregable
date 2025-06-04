@@ -102,6 +102,7 @@
   const currency = selectedCurrency
   // Inserta un nuevo comentario y fuerza la recarga de la lista
   const handleAddComment = async ({ nombre, comentario }) => {
+    console.log('Adding comment:', nombre, comentario)
     await InsertComment(props.product.uuid, comentario, nombre)
     // Al cambiar la clave provocamos que ProductComments vuelva a cargar
     refreshKey.value = Date.now()

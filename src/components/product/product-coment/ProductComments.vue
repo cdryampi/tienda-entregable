@@ -109,9 +109,14 @@ const formatDate = (iso) => {
     day: 'numeric'
   })
 }
-watch(() => props.refreshKey, loadComments)
-watch(() => props.uuid, loadComments)
 
-onMounted(()=> fetchComments(props.uuid))
+onMounted(loadComments)
+
+watch(() => props.refreshKey, loadComments)
+watch(() => props.uuid, () => {
+  loadComments()
+  currentPage.value = 1
+})
+
 </script>
 

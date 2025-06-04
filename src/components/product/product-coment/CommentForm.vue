@@ -142,34 +142,39 @@
 
 
 <script setup>
-import { ref, computed } from 'vue'
-import { useComments } from '@/composables/useComments'
+  import { ref, computed } from 'vue'
+  import { useComments } from '@/composables/useComments'
 
-const { InsertComment, loading } = useComments()
-const props = defineProps({
-  uuid: { type: String, required: true }
-})
-const emit = defineEmits(['comment-added'])
+  const { InsertComment, loading } = useComments()
+  const props = defineProps({
+    uuid: { type: String, required: true }
+  })
 
-const name = ref('')
-const comment = ref('')
+  const emit = defineEmits(['submit'])
 
-// Computed properties for better UX
-const remaining = computed(() => 300 - comment.value.length)
-const disabled = computed(() => 
-  !name.value.trim() || 
-  name.value.trim().length < 2 ||
-  !comment.value.trim() || 
-  comment.value.trim().length < 10 ||
-  comment.value.length > 300
-)
+  const name = ref('')
+  const comment = ref('')
 
-const submitComment = async () => {
-  if (disabled.value || loading.value) return
-  
-  await InsertComment(props.uuid, comment.value.trim(), name.value.trim())
-  emit('comment-added')
-  comment.value = ''
-  name.value = ''
-}
+  // Computed properties for better UX
+  const remaining = computed(() => 300 - comment.value.length)
+  const disabled = computed(() => 
+    !name.value.trim() || 
+    name.value.trim().length < 2 ||
+    !comment.value.trim() || 
+    comment.value.trim().length < 10 ||
+    comment.value.length > 300
+  )
+
+  const submitComment = async () => {
+    if (disabled.value || loading.value) return
+
+    const nombre = name.value.trim()
+    const comentario = comment.value.trim()
+    if (!nombre || !comentario) return
+
+    emit('submit', { nombre, comentario })
+
+    name.value = ''
+    comment.value = ''
+  }
 </script>

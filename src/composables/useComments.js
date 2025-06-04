@@ -1,47 +1,58 @@
-// Composable dedicado a gestionar los comentarios de los productos
-// Se apoya en Supabase para el almacenamiento de los mismos.
 import { ref, unref } from 'vue'
 import { supabase } from '@/lib/supabase'
-import { Toaster, toast } from 'vue-sonner'
+import { toast } from 'vue-sonner'
 import 'vue-sonner/style.css'
 
+const commentCache = new Map()
+const loadingByUUID = new Map()
+
 export const useComments = () => {
-  // Estado reactivo que guarda la lista de comentarios
   const comments = ref([])
-  // En caso de error se rellenará esta variable
   const error = ref(null)
-  // Estado de carga para mostrar feedback en la UI
   const loading = ref(false)
 
   const fetchComments = async (uuid) => {
+    const key = unref(uuid)
+
+    if (loadingByUUID.get(key)) return // evitar llamada duplicada
+    loadingByUUID.set(key, true)
     loading.value = true
+
+    // Usa el caché si ya está disponible
+    if (commentCache.has(key)) {
+      comments.value = commentCache.get(key)
+      loading.value = false
+      loadingByUUID.set(key, false)
+      return
+    }
+
     const { data, error: err } = await supabase
       .from('comentarios')
       .select('*')
-      .eq('uuid', uuid)
+      .eq('uuid', key)
       .order('created_at', { ascending: false })
 
     if (err) {
       error.value = err
     } else {
       comments.value = data
+      commentCache.set(key, data)
     }
+
     loading.value = false
+    loadingByUUID.set(key, false)
   }
 
-  /**
-   * Inserta un nuevo comentario para el producto indicado
-   * @param {string} uuid - Identificador del producto
-   * @param {string} comentario - Texto del comentario
-   * @param {string} nombre - Nombre del usuario
-   */
   const InsertComment = async (uuid, comentario, nombre) => {
+    console.log('Insertando comentario:', comentario, nombre)
+    const key = unref(uuid)
     loading.value = true
+
     const { data, error: err } = await supabase
       .from('comentarios')
       .insert([
         {
-          uuid: unref(uuid),
+          uuid: key,
           description: unref(comentario),
           name: unref(nombre)
         }
@@ -58,12 +69,13 @@ export const useComments = () => {
         position: 'top-right',
         duration: 3000
       })
+
+      commentCache.delete(key) // 🧼 invalidamos el cache
+      await fetchComments(key)
     }
 
-    await fetchComments(unref(uuid))
     loading.value = false
   }
-
 
   return {
     comments,
