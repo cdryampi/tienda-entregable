@@ -1,14 +1,56 @@
 <template>
-  <form @submit.prevent="submitComment" class="w-full max-w-md mx-auto space-y-6 bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
-    <!-- Header -->
-    <div class="text-center mb-2">
-      <h3 class="text-lg font-semibold text-gray-900">
+  <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8 border-t border-secondary">
+    
+    <div class="text-center my-5">
+      <h3 class="text-3xl text-black font-semibold mb-2">  
         Send a comment
       </h3>
-      <p class="text-sm text-gray-500">
+      <p class="text-2sm text-gray-500">
         explain your experience with this product
       </p>
     </div>
+  <div class="grid grid-cols-2 justify-center gap-8">
+    <div class="w-full mx-auto my-auto relative">
+      <!-- Background decoration -->
+      <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-3xl blur-xl transform rotate-3"></div>
+      
+      <!-- Image container -->
+      <div class="relative bg-white rounded-2xl p-8 shadow-xl border border-gray-100 transform hover:scale-105 transition-transform duration-300">
+        <img src="/images/comentario.png" alt="Share your experience" class="m-auto max-h-[400px] drop-shadow-lg" />
+        
+        <div class="absolute -bottom-4 -left-4 bg-secondary border border-secondary px-4 py-2 rounded-full text-xs text-white shadow-md">
+          💬 Join the conversation
+        </div>
+      </div>
+      
+      <!-- Text overlay -->
+      <div class="mt-6 text-center">
+        <h4 class="text-xl font-bold text-white mb-2">Share Your Experience</h4>
+        <p class="text-gray-300 text-sm leading-relaxed max-w-sm mx-auto">
+          Help other customers make informed decisions by sharing your honest feedback about this product.
+        </p>
+        
+        <!-- Stats or benefits -->
+        <div class="flex justify-center space-x-6 mt-4">
+          <div class="text-center">
+            <div class="text-secondary font-bold text-lg">1000+</div>
+            <div class="text-gray-400 text-xs">Happy Customers</div>
+          </div>
+          <div class="text-center">
+            <div class="text-secondary font-bold text-lg">4.8★</div>
+            <div class="text-gray-400 text-xs">Average Rating</div>
+          </div>
+          <div class="text-center">
+            <div class="text-secondary font-bold text-lg">24h</div>
+            <div class="text-gray-400 text-xs">Response Time</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full mx-auto mb-6">
+  <form @submit.prevent="submitComment" class="w-full max-w-md mx-auto space-y-6 bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
+    <!-- Header -->
+
 
     <!-- Name Field -->
     <div class="space-y-2">
@@ -21,7 +63,7 @@
           v-model="name"
           id="username"
           type="text"
-          placeholder="Ingresa tu nombre"
+          placeholder="write your name here..."
           required
           maxlength="50"
           class="block w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-200 placeholder-gray-400 text-gray-900"
@@ -34,7 +76,7 @@
         </div>
       </div>
       <div class="flex justify-between items-center">
-        <p v-if="name.length > 0 && name.length < 2" class="text-xs text-primary">Mínimo 2 caracteres</p>
+        <p v-if="name.length > 0 && name.length < 2" class="text-xs text-primary">Minium 2 characters</p>
         <p class="text-xs text-gray-500 ml-auto">{{ name.length }}/50</p>
       </div>
     </div>
@@ -49,14 +91,16 @@
         v-model="comment"
         id="message"
         rows="4"
-        placeholder="Escribe tu comentario aquí..."
+        placeholder="write your comment here..."
         required
         maxlength="300"
         class="block w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-transparent transition-all duration-200 placeholder-gray-400 text-gray-900 resize-none"
         :class="{ 'ring-2 ring-secondary border-secondary': comment.length >= 10 && comment.length <= 300 }"
       ></textarea>
       <div class="flex justify-between items-center">
-        <p v-if="comment.length > 0 && comment.length < 10" class="text-xs text-primary">Mínimo 10 caracteres</p>
+        <p v-if="comment.length > 0 && comment.length < 10" class="text-xs text-primary">
+          Minimum 10 characters
+        </p>
         <p class="text-xs ml-auto" :class="remaining < 50 ? 'text-primary' : 'text-gray-500'">
           {{ remaining }} characters remaining
         </p>
@@ -68,7 +112,7 @@
       <button
         type="submit"
         :disabled="disabled || loading"
-        class="w-full inline-flex justify-center items-center px-6 py-3 border border-transparent rounded-xl text-sm font-medium text-white transition-all duration-200 transform hover:scale-[1.02] disabled:scale-100 disabled:cursor-not-allowed shadow-lg hover:shadow-xl disabled:shadow-md"
+        class="w-full inline-flex justify-center items-center px-6 py-3 cursor-pointer border border-transparent rounded-xl text-sm font-medium text-white transition-all duration-200 transform hover:scale-[1.02] disabled:scale-100 disabled:cursor-not-allowed shadow-lg hover:shadow-xl disabled:shadow-md"
         :class="disabled || loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90'"
       >
         <span v-if="!loading" class="flex items-center space-x-2">
@@ -89,6 +133,11 @@
       </button>
     </div>
   </form>
+    </div>
+  </div>
+  </div>
+
+
 </template>
 
 
