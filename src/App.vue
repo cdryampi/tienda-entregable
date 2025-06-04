@@ -7,6 +7,7 @@ import HeroBanner from './components/home/HeroBanner.vue'
 import ProductSelection from './components/product/ProductSelection.vue'
 import ProductContainer from './components/product/ProductContainer.vue'
 import { useProducts } from '@/composables/useProducts'
+import Footer from './components/home/Footer.vue'
 // Notificaciones
 import 'vue-sonner/style.css'
 import { Toaster } from 'vue-sonner'
@@ -36,6 +37,7 @@ const handleProductClick = async (uuid) => {
         <ProductContainer />
       </div>
     </main>
+    <Footer />
   </div>
 </template>
 
